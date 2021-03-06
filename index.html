@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Web Application</title>
+    <link rel="stylesheet" href="/index.css">
+    <script src="/index.js"></script>
+    <link type="text/css" rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"></script>
+</head>
+
+<body onload="getLocation()">
+    <div class="container">
+        <div class="blur"></div>
+        <div id="cardContainer" class="cardContainer">
+            <div class="formOutLay">
+                <div id="mainSearch" class="ui icon input">
+                    <input id="city" type="text" placeholder="Search City..." style="width: 400px;" onkeypress="func(event,0,'city')">
+                    <i class="inverted circular search link icon"
+                        onclick="getData(document.getElementById('city').value,0)"></i>
+                </div>
+                <div onclick="closeBTN()"><span id="CloseBut" style='font-size:100px;display: none;'>&#10006;</span>
+                </div>
+                <div style="margin-top: 10px;" id="forecast">
+                    <a href="forecast.html"><button class="ui inverted violet button">See Forecast</button></a>
+                </div>
+            </div>
+            <div id="c1" class="card">
+
+                <div id="C1Search" class="ui icon input" style="margin-top: 15px;display:none;">
+                    <input id="C1city" type="text" placeholder="Search City..." style="width: 200px;"onkeypress="func(event,0,'C1city')">
+                    <i class="inverted circular search link icon"
+                        onclick="getData(document.getElementById('C1city').value,0)"></i>
+                </div>
+                <button id="compBut" class="ui inverted primary  button" style="margin-top: 10px;"
+                    onclick="Compare()">Compare Cities</button>
+
+                <h2 id="cityName1" style="color: white;"></h2>
+                <p style="background-color: rgba(240, 77, 77, 0.979);visibility: hidden; margin-bottom:30px ;"
+                    id="notification1"></p>
+                <div
+                    style="margin-top:5px;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+                    <div id="icon1" style="color: rgb(255, 9, 9);font-size: 100px;"></div>
+                    <div id="results1" style="color: black;"></div>
+                </div>
+            </div>
+
+            <div id="c2" class="card" style="display: none;">
+                <div id="C2Search" class="ui icon input" style="margin-top: 15px;">
+                    <input id="C2city" type="text" placeholder="Search City..." style="width: 200px;"onkeypress="func(event,1,'C2city')">
+                    <i class="inverted circular search link icon"
+                        onclick="getData(document.getElementById('C2city').value,1)"></i>
+                </div>
+
+                <h2 id="cityName2" style="color: white;"></h2>
+                <p style="background-color: rgba(240, 77, 77, 0.979);visibility: hidden; margin-bottom:30px ;"
+                    id="notification2"></p>
+                <div
+                    style="margin-top:5px;display: flex;flex-direction: column;align-items: center;justify-content: center;">
+                    <div id="icon2" style="color: red;font-size: 100px;"></div>
+                    <div id="results2" style="color: black;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function func(event,n,id){
+        if(event.keyCode==13){
+            getData(document.getElementById(id).value,n)
+        }
+    }
+</script>
+
+</html>

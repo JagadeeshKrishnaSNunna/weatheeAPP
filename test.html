@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <title>Document</title>
+    <style>
+        .chartWrapper {
+            position: relative;
+        }
+
+        .chartWrapper>canvas {
+            position: absolute;
+            left: 0;
+            top: 0;
+            /* pointer-events: none; */
+        }
+
+        .container {
+            width: 500px;
+            height: auto;
+            position: relative;
+            margin: 35%;
+        }
+
+        .chartAreaWrapper {
+            width: 600px;
+            overflow-x: scroll;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="chartWrapper">
+            <div class="chartAreaWrapper">
+                <div class="chartAreaWrapper2">
+                    <canvas id="myChart" height="500" width="1200"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <canvas id="myChart" width="1000" height="300"></canvas> -->
+
+
+    <script>
+        let myChart = document.getElementById('myChart').getContext('2d');
+        let c = new Chart(myChart,
+            {
+                type: 'line',
+                data: {
+                    labels: ['good', 'bad', 'average', 'oo', 'good', 'bad', 'average','good', 'bad', 'average', 'oo', 'good', 'bad', 'average'],
+                    datasets: [{
+                        label: 'pop',
+                        data: [1, 6, 4, 8, 1, 6, 4,1, 6, 4, 8, 1, 6, 4],
+                        backgroundColor: 'rgba(0,0,0,0)',
+                        borderColor: 'red',
+                        
+                    },
+                    {
+                        label:"ola",
+                        data:[5,5,5,5]
+                    }
+                ]
+                },
+                options: {
+                    responsive: false,
+                    scales: {
+                        xAxes: [{
+                            gridLines: {
+                                display: false
+                            },
+                            ticks: {
+                                labelOffset:50
+                            }
+
+
+                        }],
+                        yAxes: [{
+                            gridLines: {
+                                display: false
+                            }
+                        }]
+                    },
+                },
+            });
+    </script>
+</body>
+<!-- <script>
+    hourly=[];
+    node={}
+    fetch("https://api.openweathermap.org/data/2.5/onecall?lat=33.441792&lon=-94.037689&exclude=current,minutely,alerts,&appid=3a2d73ed6c4e63f1257484523c540b43")
+    .then(response=>response.json())
+    .then(data=>{
+        for(i in data.hourly){
+            node.temp=Math.floor(data.hourly[i].temp-273);
+            node.wind=data.hourly[i].wind_speed;
+            node.desc=data.hourly[i].weather.main
+            hourly.push(node)
+        }
+         console.log(hourly);
+    })
+</script> -->
+
+</html>

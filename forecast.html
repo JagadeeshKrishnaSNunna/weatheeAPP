@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Web Application</title>
+    <link rel="stylesheet" href="/forecast.css">
+    <script src="/forecast.js"></script>
+    <link type="text/css" rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+</head>
+
+<body onload="drawGraph()">
+    <div class="container">
+        <div class="blur"></div>
+        <div id="cardContainer" class="cardContainer">
+            <div id="dayBut" style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
+                <button class="ui inverted button" onclick="dailyforecast()">4-Day Forecast</button><br><br><br>
+                <a href="index.html" style="text-decoration: none;font-size: 70px;">&#10006</a>
+            </div>
+
+
+            <div id="c1" class="card">
+                    <div class="chartWrapper">
+                        <div class="chartAreaWrapper">
+                            <div class="chartAreaWrapper2">
+                                <canvas id="mychart" height="300" width="2500"></canvas>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+
+            <div id="choice" class="card" style="width: 30%;display: none;">
+                <table>
+                    <tr id="t0" onclick="d(0)"><td class="trSty" ><p id='1'>today</p></td></tr>
+                    <tr id="t1" onclick="d(1)"><td class="trSty" ><p id='2'>today</p></td></tr>
+                    <tr id="t2" onclick="d(2)"><td class="trSty" ><p id='3'>today</p></td></tr>
+                    <tr id="t3" onclick="d(3)"><td class="trSty" ><p id='4'>today</p></td></tr>
+                    <tr id="t4" onclick="closeWind()"><td class="trSty" ><p ></p>&#10006;</td></tr>
+                </table>
+            </div>
+
+
+            <div id="c2" class="card" style="display: none;">
+                <div>
+                    <div id="icon" style="font-size: 80px;"></div>
+                    <table id='temp'>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
